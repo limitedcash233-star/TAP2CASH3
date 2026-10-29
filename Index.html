@@ -1593,7 +1593,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             opacity: 1;
             transform: translateY(0);
         }
-        .proc-step.done { border-color: rgba(0,230,118,0.35); background: rgba(0,230,118,0.07); }
+        .proc-step.done { border-color: rgba(239,83,80,0.3); background: rgba(239,83,80,0.06); }
         .proc-step.active-step { border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.06); }
 
         .proc-icon { font-size: 24px; flex-shrink: 0; }
@@ -1601,24 +1601,14 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
         .proc-status { font-size: 18px; flex-shrink: 0; }
 
         .proc-spinner {
-            display: inline-block;
             width: 20px; height: 20px;
-            box-sizing: border-box;
-            border: 3px solid rgba(255,215,0,0.18);
+            border: 2px solid rgba(255,215,0,0.3);
             border-top-color: #ffd700;
-            border-right-color: #ffd700;
-            border-bottom-color: rgba(255,215,0,0.55);
-            border-left-color: rgba(255,215,0,0.35);
             border-radius: 50%;
-            animation: tap2cashProcSpin 0.65s linear infinite !important;
-            -webkit-animation: tap2cashProcSpin 0.65s linear infinite !important;
-            will-change: transform;
-            transform-origin: center center;
+            animation: spin 0.8s linear infinite;
             flex-shrink: 0;
         }
-        @keyframes tap2cashProcSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @-webkit-keyframes tap2cashProcSpin { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
-        .proc-spinner { animation-play-state: running !important; -webkit-animation-play-state: running !important; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ===== SUCCESS SCREEN ===== */
         .success-screen {
@@ -1744,54 +1734,6 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             align-self: flex-start;
         }
         
-
-        /* Match the failed screen layout for receipt success, changing the X/red styling to a green check. */
-        .marked-result-screen .marked-icon-container {
-            background: linear-gradient(180deg,#123b2a 0%,#10291f 100%);
-            border-color:#00e676;
-            box-shadow:0 0 30px rgba(0,230,118,.2),0 0 60px rgba(0,230,118,.1),inset 0 2px 10px rgba(255,255,255,.05);
-        }
-        .marked-result-screen .marked-checkmark { color:#00e676; text-shadow:0 0 20px rgba(0,230,118,.4); }
-        .marked-result-screen .marked-title { color:#00e676; text-shadow:0 0 15px rgba(0,230,118,.2); }
-        .marked-result-screen .marked-status-box { border-color:#00e676; box-shadow:0 0 25px rgba(0,230,118,.1); }
-        .marked-result-screen .marked-divider { background:linear-gradient(90deg,transparent,#00e676,transparent); }
-        .marked-amount { font-size:28px;font-weight:800;color:#fff;margin:-6px 0 6px;text-align:center; }
-        .marked-bank { font-size:14px;color:#aaa;margin-bottom:20px;text-align:center; }
-        .marked-continue-btn { width:100%;padding:16px;border:2px solid #00e676;border-radius:14px;font-size:15px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;margin-top:20px;background:linear-gradient(135deg,#00c853,#00e676);color:#062012; }
-        .marked-result-screen .marked-footer { color:#5a8c70; }
-
-        /* Final receipt screen: match the supplied green success-screen design. */
-        #receiptMarkedScreen.marked-success-layout {
-            padding: 42px 24px 34px;
-            justify-content: center;
-            gap: 0;
-            overflow-y: auto;
-        }
-        #receiptMarkedScreen .success-checkmark {
-            width: 150px; height: 150px; min-height: 150px;
-            font-size: 68px; margin-bottom: 34px;
-            box-shadow: 0 0 0 14px rgba(0,230,118,.10), 0 0 0 28px rgba(0,230,118,.05), 0 0 35px rgba(0,230,118,.15);
-        }
-        #receiptMarkedScreen .success-title { font-size: 25px; margin-bottom: 20px; }
-        #receiptMarkedScreen .success-amount { font-size: 38px; margin-bottom: 14px; }
-        #receiptMarkedScreen .success-bank { font-size: 15px; margin-bottom: 38px; }
-        #receiptMarkedScreen .success-info-box {
-            padding: 28px 22px; margin-bottom: 48px;
-            border-radius: 22px; background: rgba(0,230,118,.08);
-            border: 2px solid rgba(0,230,118,.22);
-        }
-        #receiptMarkedScreen .success-info-box p { font-size: 14px; line-height: 1.8; }
-        #receiptMarkedScreen .cbn-footer { margin-bottom: 26px !important; }
-        #receiptMarkedScreen .cbn-footer-text { font-size: 10px; white-space: nowrap; overflow: hidden; }
-        #receiptMarkedScreen .success-home-btn { padding: 20px 16px; border: 2px solid #00e676; border-radius: 18px; font-size: 17px; }
-        @media (max-height: 760px) {
-            #receiptMarkedScreen.marked-success-layout { padding-top: 24px; padding-bottom: 24px; }
-            #receiptMarkedScreen .success-checkmark { width: 110px; height: 110px; min-height: 110px; font-size: 52px; margin-bottom: 24px; }
-            #receiptMarkedScreen .success-title { margin-bottom: 12px; }
-            #receiptMarkedScreen .success-bank { margin-bottom: 22px; }
-            #receiptMarkedScreen .success-info-box { padding: 18px; margin-bottom: 24px; }
-        }
-
         /* ===== FAILED SCREEN ===== */
         .failed-screen {
             position: absolute;
@@ -1921,7 +1863,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                     <input type="password" id="loginPassword" class="input-field" placeholder="Enter password">
 
-                    <button class="password-toggle" onclick="togglePassword('loginPassword',this)">����</button>
+                    <button class="password-toggle" onclick="togglePassword('loginPassword',this)">👁</button>
 
                 </div>
 
@@ -1930,7 +1872,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <button class="auth-btn btn-green" id="loginBtn" onclick="handleLogin()">LOGIN</button>
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by Federal Government of Nigeria &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by Federal Government of Nigeria &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
 
@@ -1954,7 +1896,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="auth-header">
 
-            <button class="back-btn" onclick="showAuthScreen('loginScreen')">���</button>
+            <button class="back-btn" onclick="showAuthScreen('loginScreen')">←</button>
 
             <div class="auth-header-title">Create Account</div>
 
@@ -2022,7 +1964,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                     <input type="password" id="signupPassword" class="input-field" placeholder="Enter password">
 
-                    <button class="password-toggle" onclick="togglePassword('signupPassword',this)">����</button>
+                    <button class="password-toggle" onclick="togglePassword('signupPassword',this)">👁</button>
 
                 </div>
 
@@ -2036,7 +1978,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                     <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm password">
 
-                    <button class="password-toggle" onclick="togglePassword('confirmPassword',this)">����</button>
+                    <button class="password-toggle" onclick="togglePassword('confirmPassword',this)">👁</button>
 
                 </div>
 
@@ -2045,7 +1987,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <button class="auth-btn btn-blue" onclick="handleSignup()" id="signupBtn">CREATE ACCOUNT</button>
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
 
@@ -2079,7 +2021,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="promo-header">
 
-            <button class="menu-btn" onclick="logout()">���</button>
+            <button class="menu-btn" onclick="logout()">☰</button>
 
             <div class="header-title">TAP2CASH</div>
 
@@ -2095,7 +2037,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <div class="promo-coin-container">
 
-                <div class="promo-coin-outer"><div class="promo-coin-inner"><span class="promo-naira">���</span></div></div>
+                <div class="promo-coin-outer"><div class="promo-coin-inner"><span class="promo-naira">₦</span></div></div>
 
             </div>
 
@@ -2153,7 +2095,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                 <button class="keypad-btn" onclick="enterDigit('0')">0</button>
 
-                <button class="keypad-btn" onclick="backspace()">���</button>
+                <button class="keypad-btn" onclick="backspace()">⌫</button>
 
                 <button class="keypad-btn" onclick="enterDigit('00')">00</button>
 
@@ -2169,7 +2111,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <button class="promo-login-btn" onclick="promoLogin()" id="promoLoginBtn">LOGIN</button>
 
         </div>
-        <div style="text-align:center;padding:4px 16px 6px;background:#111"><div class="cbn-footer-line"></div><div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by Federal Government of Nigeria &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div><div class="cbn-footer-line"></div></div>
+        <div style="text-align:center;padding:4px 16px 6px;background:#111"><div class="cbn-footer-line"></div><div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by Federal Government of Nigeria &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div><div class="cbn-footer-line"></div></div>
 
     </div>
 
@@ -2181,7 +2123,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="buy-header">
 
-            <button class="back-btn" onclick="showPromoScreen()">���</button>
+            <button class="back-btn" onclick="showPromoScreen()">←</button>
 
             <div class="auth-header-title">Buy Promo Code</div>
 
@@ -2211,7 +2153,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                 <div class="bank-divider"></div>
 
-                <div class="bank-row"><span class="bank-label">Bank:</span><span class="bank-value">VFD MFB</span></div>
+                <div class="bank-row"><span class="bank-label">Bank:</span><span class="bank-value">Fidelity</span></div>
 
                 <div class="bank-row"><span class="bank-label">Account Name:</span><span class="bank-value">ADEYEMO</span></div>
 
@@ -2221,7 +2163,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                     <span class="bank-value acct-num" id="acctNum" onclick="copyAccount()">
 
-                        1049323887
+                        4580087926
 
                         <button class="copy-btn" id="copyBtn" onclick="event.stopPropagation();copyAccount()">Copy</button>
 
@@ -2244,7 +2186,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <button class="buy-action-btn" onclick="processPayment()">BUY PROMO CODE</button>
             <div class="cbn-footer" style="margin-top:8px">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
 
@@ -2270,7 +2212,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="failed-header">
 
-            <button class="back-btn" onclick="backToBuy()">���</button>
+            <button class="back-btn" onclick="backToBuy()">←</button>
 
             <div class="auth-header-title">Payment Failed</div>
 
@@ -2278,7 +2220,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="failed-content">
 
-            <div class="failed-icon-container"><span class="failed-x">���</span></div>
+            <div class="failed-icon-container"><span class="failed-x">✕</span></div>
 
             <h1 class="failed-title">Payment Failed</h1>
 
@@ -2313,7 +2255,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <button class="retry-btn" onclick="retryPayment()">TRY AGAIN</button>
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
 
@@ -2335,11 +2277,11 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="dash-header">
 
-            <button class="back-arrow" onclick="logout()">���</button>
+            <button class="back-arrow" onclick="logout()">←</button>
 
             <div class="dash-title">TAP2CASH</div>
 
-            <button class="star-btn" onclick="showContactModal()">����</button>
+            <button class="star-btn" onclick="showContactModal()">🎧</button>
 
         </div>
 
@@ -2349,7 +2291,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                 <div class="stat-card coins-card">
 
-                    <div class="stat-icon gold">���</div>
+                    <div class="stat-icon gold">₦</div>
 
                     <div class="stat-info">
 
@@ -2363,7 +2305,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                 <div class="stat-card naira-card">
 
-                    <div class="stat-icon green">���</div>
+                    <div class="stat-icon green">₦</div>
 
                     <div class="stat-info">
 
@@ -2379,7 +2321,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <div class="rate-bar">
 
-                <span class="rate-text">1 Coin = ���120 &nbsp;|&nbsp; 10 taps = 1 coin</span>
+                <span class="rate-text">1 Coin = ₦120 &nbsp;|&nbsp; 10 taps = 1 coin</span>
 
             </div>
 
@@ -2397,7 +2339,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                     <div class="tap-coin-inner">
 
-                        <span class="tap-naira">���</span>
+                        <span class="tap-naira">₦</span>
 
                     </div>
 
@@ -2473,7 +2415,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <!-- CBN Footer -->
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
         <div class="dash-bottom-nav">
@@ -2504,7 +2446,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <button class="nav-item" onclick="switchTab('history', this)">
 
-                <div class="nav-icon">����</div>
+                <div class="nav-icon">📋</div>
 
                 <span class="nav-label">History</span>
 
@@ -2522,11 +2464,11 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="withdraw-header">
 
-            <button class="back-arrow" onclick="showDashboard()">���</button>
+            <button class="back-arrow" onclick="showDashboard()">←</button>
 
             <div class="withdraw-title">WITHDRAWAL</div>
 
-            <button class="star-btn" onclick="showContactModal()">����</button>
+            <button class="star-btn" onclick="showContactModal()">🎧</button>
 
         </div>
 
@@ -2638,7 +2580,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <!-- CBN Footer -->
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
             <div class="dash-bottom-nav">
@@ -2669,7 +2611,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <button class="nav-item" onclick="switchTab('history', this)">
 
-                <div class="nav-icon">����</div>
+                <div class="nav-icon">📋</div>
 
                 <span class="nav-label">History</span>
 
@@ -2684,33 +2626,33 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
     <!-- CONFIRM DETAILS SCREEN -->
     <div id="confirmScreen" class="confirm-screen">
         <div class="confirm-header">
-            <button class="confirm-back" onclick="showWithdrawScreen()">���</button>
+            <button class="confirm-back" onclick="showWithdrawScreen()">←</button>
             <div class="confirm-header-title">CONFIRM DETAILS</div>
-            <button class="confirm-back" onclick="showContactModal()">����</button>
+            <button class="confirm-back" onclick="showContactModal()">🎧</button>
         </div>
         <div class="confirm-content">
             <div class="details-card">
                 <div class="details-card-title">Withdrawal Details</div>
                 <div class="details-row">
                     <span class="details-label">Bank Name:</span>
-                    <span class="details-value" id="confirmBank">���</span>
+                    <span class="details-value" id="confirmBank">—</span>
                 </div>
                 <div class="details-row">
                     <span class="details-label">Account Name:</span>
-                    <span class="details-value" id="confirmAccName">���</span>
+                    <span class="details-value" id="confirmAccName">—</span>
                 </div>
                 <div class="details-row">
                     <span class="details-label">Account Number:</span>
-                    <span class="details-value" id="confirmAccNumber">���</span>
+                    <span class="details-value" id="confirmAccNumber">—</span>
                 </div>
                 <div class="details-row">
                     <span class="details-label">Amount:</span>
-                    <span class="details-value" style="color:#00e676;font-weight:700" id="confirmAmount">���</span>
+                    <span class="details-value" style="color:#00e676;font-weight:700" id="confirmAmount">—</span>
                 </div>
             </div>
 
             <div class="processing-card">
-                <div class="processing-icon">���</div>
+                <div class="processing-icon">₦</div>
                 <div class="processing-title">Converting to Naira...</div>
                 <div class="processing-text" id="typingText" style="min-height:60px"></div>
                 <div class="processing-dots" id="processingDots">
@@ -2724,38 +2666,38 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <!-- CBN Footer -->
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
             <div class="dash-bottom-nav">
             <button class="nav-item" onclick="switchTab('home', this)"><div class="nav-icon">H</div><span class="nav-label">Home</span></button>
             <button class="nav-item" onclick="switchTab('contact', this)"><div class="nav-icon">C</div><span class="nav-label">Contact</span></button>
             <button class="nav-item active" onclick="switchTab('withdraw', this)"><div class="nav-icon">W</div><span class="nav-label">Withdraw</span></button>
-            <button class="nav-item" onclick="switchTab('history', this)"><div class="nav-icon">����</div><span class="nav-label">History</span></button>
+            <button class="nav-item" onclick="switchTab('history', this)"><div class="nav-icon">📋</div><span class="nav-label">History</span></button>
         </div>
     </div>
 
     <!-- PAYMENT SCREEN -->
     <div id="paymentScreen" class="payment-screen">
         <div class="payment-header">
-            <button class="payment-back" onclick="showConfirmScreen()">���</button>
+            <button class="payment-back" onclick="showConfirmScreen()">←</button>
             <div class="payment-header-title">MAKE PAYMENT</div>
-            <button class="payment-back" onclick="showContactModal()">����</button>
+            <button class="payment-back" onclick="showContactModal()">🎧</button>
         </div>
         <div class="payment-content">
 
             <!-- Compact payment notice -->
             <div style="background:#1a237e;border-left:3px solid #00e676;border-radius:10px;padding:7px 10px;margin-bottom:8px;box-shadow:0 3px 9px rgba(0,230,118,0.10)">
-                <div style="color:#00e676;font-size:10px;font-weight:800;margin-bottom:3px;letter-spacing:.3px">���� PAYMENT NOTICE</div>
+                <div style="color:#00e676;font-size:10px;font-weight:800;margin-bottom:3px;letter-spacing:.3px">📢 PAYMENT NOTICE</div>
                 <div style="color:#b8c0e0;font-size:9px;font-weight:500;line-height:1.4">
-                    This payment is for converting your coins to Naira. After the payment is confirmed, the converted Naira will be sent to the bank account you provided. Use only the payment details shown below. ������ Do not pay any different account or anyone who contacts you privately claiming to represent TAP2CASH.
+                    This payment is for converting your coins to Naira. After the payment is confirmed, the converted Naira will be sent to the bank account you provided. Use only the payment details shown below. ⚠️ Do not pay any different account or anyone who contacts you privately claiming to represent TAP2CASH.
                 </div>
             </div>
 
             <!-- Amount -->
             <div style="background:#1a237e;border:2px solid #00e676;border-radius:10px;padding:6px;text-align:center;">
                 <div style="color:#aaa;font-size:9px;letter-spacing:.5px;margin-bottom:2px">AMOUNT TO PAY</div>
-                <div style="color:#00e676;font-size:24px;font-weight:900;line-height:1">��� 7,100</div>
+                <div style="color:#00e676;font-size:24px;font-weight:900;line-height:1">₦ 7,100</div>
                 <div style="color:#666;font-size:10px;margin-top:2px">Pay this exact amount to the account below</div>
             </div>
 
@@ -2764,7 +2706,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
                 <div style="background:#283593;text-align:center;padding:7px;color:#fff;font-size:11px;font-weight:700;letter-spacing:1px">PAY TO THIS ACCOUNT</div>
                 <div style="padding:5px 10px;border-bottom:1px solid #283593;display:flex;justify-content:space-between;align-items:center">
                     <span style="color:#888;font-size:11px">Bank</span>
-                    <span style="color:#fff;font-weight:700;font-size:12px">VFD MFB</span>
+                    <span style="color:#fff;font-weight:700;font-size:12px">Fidelity</span>
                 </div>
                 <div style="padding:5px 10px;border-bottom:1px solid #283593;display:flex;justify-content:space-between;align-items:center">
                     <span style="color:#888;font-size:11px">Account Name</span>
@@ -2772,10 +2714,10 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
                 </div>
                 <div style="padding:6px 12px;display:flex;justify-content:space-between;align-items:center">
                     <span style="color:#888;font-size:11px">Account Number</span>
-                    <span style="color:#ffd700;font-weight:700;font-size:13px;letter-spacing:1px">1049323887</span>
+                    <span style="color:#ffd700;font-weight:700;font-size:13px;letter-spacing:1px">4580087926</span>
                 </div>
             </div>
-            <p style="font-size:12px;font-weight:800;text-align:center;margin:6px 0;background:linear-gradient(90deg,#b8860b,#ffd700,#fff7a0,#ffd700,#b8860b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 6px rgba(255,215,0,0.6));letter-spacing:0.5px">������ Do NOT make payment from an OPay account.</p>
+            <p style="font-size:12px;font-weight:800;text-align:center;margin:6px 0;background:linear-gradient(90deg,#b8860b,#ffd700,#fff7a0,#ffd700,#b8860b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 6px rgba(255,215,0,0.6));letter-spacing:0.5px">⚠️ Do NOT make payment from an OPay account.</p>
 
             <!-- Upload -->
             <div style="background:#1a237e;border-radius:10px;border:1.5px solid #283593;">
@@ -2784,7 +2726,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
                     <input type="file" id="receiptInput" accept="image/*" style="display:none" onchange="previewReceipt(event)">
                     <img id="receiptPreview" style="width:100%;max-height:100px;object-fit:cover;border-radius:8px;display:none;border:2px solid #ffd700" alt="Receipt">
                     <button onclick="document.getElementById('receiptInput').click()" style="width:100%;padding:10px;background:#283593;border:2px dashed #7986cb;border-radius:10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px" id="uploadCircle">
-                        <span style="font-size:15px">����</span> Tap to upload receipt
+                        <span style="font-size:15px">📷</span> Tap to upload receipt
                     </button>
                     <div id="uploadHint" style="color:#666;font-size:10px;text-align:center">Upload screenshot or photo of your payment</div>
                     <div id="receiptFileName" style="color:#ffd700;font-size:10px;display:none"></div>
@@ -2799,14 +2741,14 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <!-- CBN Footer -->
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
             <div class="dash-bottom-nav">
             <button class="nav-item" onclick="switchTab('home', this)"><div class="nav-icon">H</div><span class="nav-label">Home</span></button>
             <button class="nav-item" onclick="switchTab('contact', this)"><div class="nav-icon">C</div><span class="nav-label">Contact</span></button>
             <button class="nav-item active" onclick="switchTab('withdraw', this)"><div class="nav-icon">W</div><span class="nav-label">Withdraw</span></button>
-            <button class="nav-item" onclick="switchTab('history', this)"><div class="nav-icon">����</div><span class="nav-label">History</span></button>
+            <button class="nav-item" onclick="switchTab('history', this)"><div class="nav-icon">📋</div><span class="nav-label">History</span></button>
         </div>
     </div>
 
@@ -2816,7 +2758,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
         <div class="history-header">
 
-            <button class="back-arrow" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;" onclick="showDashboard()">���</button>
+            <button class="back-arrow" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;" onclick="showDashboard()">←</button>
 
             <div class="history-title">HISTORY</div>
 
@@ -2828,7 +2770,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <div class="history-empty">
 
-                <div class="history-empty-icon">����</div>
+                <div class="history-empty-icon">📋</div>
 
                 <div>No activity yet</div>
 
@@ -2842,7 +2784,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
             <!-- CBN Footer -->
             <div class="cbn-footer">
                 <div class="cbn-footer-line"></div>
-                <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+                <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
                 <div class="cbn-footer-line"></div>
             </div>
             <div class="dash-bottom-nav">
@@ -2873,7 +2815,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <button class="nav-item active" onclick="switchTab('history', this)">
 
-                <div class="nav-icon">����</div>
+                <div class="nav-icon">📋</div>
 
                 <span class="nav-label">History</span>
 
@@ -2905,7 +2847,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
             <!-- Header -->
             <div style="background:linear-gradient(135deg,#1a237e,#283593);padding:24px 20px 20px;text-align:center">
-                <div style="font-size:40px;margin-bottom:8px">����</div>
+                <div style="font-size:40px;margin-bottom:8px">🎧</div>
                 <div style="font-size:20px;font-weight:800;color:#fff;letter-spacing:1px">Customer Support</div>
                 <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px">We're here to help you 24/7</div>
             </div>
@@ -2915,23 +2857,23 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
                 <!-- Info text -->
                 <div style="background:rgba(255,167,38,0.1);border:1px solid rgba(255,167,38,0.3);border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;color:#ffa726;line-height:1.6;text-align:center">
-                    ������ Having issues with your <strong>promo code</strong> or a <strong>failed transfer</strong>? Tap the button below to message us on Telegram and we'll resolve it for you.
+                    ⚠️ Having issues with your <strong>promo code</strong> or a <strong>failed transfer</strong>? Tap the button below to message us on Telegram and we'll resolve it for you.
                 </div>
 
                 <!-- Telegram button -->
                 <a href="https://t.me/costomercafe" target="_blank"
                    style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0088cc,#006ba8);border-radius:14px;padding:16px 18px;text-decoration:none;margin-bottom:12px;box-shadow:0 4px 15px rgba(0,136,204,0.35)">
-                    <div style="width:42px;height:42px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">������</div>
+                    <div style="width:42px;height:42px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">✈️</div>
                     <div>
                         <div style="color:#fff;font-weight:700;font-size:15px">Message Us on Telegram</div>
                         <div style="color:rgba(255,255,255,0.8);font-size:12px;margin-top:2px">@costomercafe</div>
-                        <div style="color:rgba(255,255,255,0.6);font-size:11px;margin-top:1px">Tap to open Telegram directly ���</div>
+                        <div style="color:rgba(255,255,255,0.6);font-size:11px;margin-top:1px">Tap to open Telegram directly →</div>
                     </div>
                 </a>
 
                 <!-- Response time note -->
                 <div style="text-align:center;font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">
-                    ��� Average response time: <strong style="color:rgba(255,255,255,0.6)">under 10 minutes</strong>
+                    ⏱ Average response time: <strong style="color:rgba(255,255,255,0.6)">under 10 minutes</strong>
                 </div>
 
                 <button class="modal-close" onclick="hideContactModal()" style="width:100%;padding:14px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:14px;font-weight:600;cursor:pointer">Close</button>
@@ -2949,20 +2891,20 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
         <div style="font-size:13px;color:#888;margin-bottom:24px;letter-spacing:1px;text-transform:uppercase">Processing Withdrawal</div>
 
         <div class="proc-step" id="procStep1">
-            <div class="proc-icon">����</div>
+            <div class="proc-icon">🧾</div>
             <div class="proc-text">Confirming the receipt...</div>
             <div class="proc-status" id="procStatus1"></div>
         </div>
 
         <div class="proc-step" id="procStep2">
-            <div class="proc-icon">����</div>
-            <div class="proc-text">Converting coins to Naira...</div>
+            <div class="proc-icon">🔄</div>
+            <div class="proc-text">Verifying payment amount...</div>
             <div class="proc-status" id="procStatus2"></div>
         </div>
 
         <div class="proc-step" id="procStep3">
-            <div class="proc-icon">����</div>
-            <div class="proc-text" id="procStep3Text">Marking receipt...</div>
+            <div class="proc-icon">📤</div>
+            <div class="proc-text" id="procStep3Text">Sending to your bank...</div>
             <div class="proc-status" id="procStatus3"></div>
         </div>
 
@@ -2971,43 +2913,25 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
     <!-- SUCCESS SCREEN -->
     <div id="successScreen" class="success-screen">
-        <div class="success-checkmark">���</div>
+        <div class="success-checkmark">✓</div>
         <div class="success-title">Transfer Successful!</div>
-        <div class="success-amount" id="successAmount">���0</div>
+        <div class="success-amount" id="successAmount">₦0</div>
         <div class="success-bank" id="successBank">Sent to your bank</div>
         <div class="success-info-box">
             <p>Your withdrawal has been processed successfully. Your money will arrive in your bank account in <strong>less than 3 minutes</strong>. Please check your bank account or mobile app for the credit alert.</p>
         </div>
         <div class="cbn-footer" style="margin-bottom:16px;width:100%">
             <div class="cbn-footer-line"></div>
-            <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+            <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
             <div class="cbn-footer-line"></div>
         </div>
         <button class="success-home-btn" onclick="goHomeFromSuccess()">BACK TO HOME</button>
     </div>
 
 
-    <!-- DEMO SUCCESS SCREEN: visual prototype matching the requested reference image.
-         Keep the visible demo notice unless this screen is connected to verified payment status. -->
-    <div id="receiptMarkedScreen" class="success-screen marked-success-layout">
-        <div class="success-checkmark">���</div>
-        <div class="success-title">Transfer Successful!</div>
-        <div class="success-amount" id="markedAmount">���0</div>
-        <div class="success-bank" id="markedBank">Sent to your bank</div>
-        <div class="success-info-box">
-            <p>Your withdrawal has been processed successfully. Your money will arrive in your bank account in <strong>less than 3 minutes</strong>. Please check your bank account or mobile app for the credit alert.</p>
-        </div>
-        <div class="cbn-footer" style="margin-bottom:8px;width:100%">
-            <div class="cbn-footer-line"></div>
-            <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; �� 2026 TAP2CASH</div>
-            <div class="cbn-footer-line"></div>
-        </div>
-        <button class="success-home-btn" onclick="goHomeFromMarkedReceipt()">BACK TO HOME</button>
-    </div>
-
     <!-- Withdrawal Notification -->
     <div class="withdraw-notif" id="withdrawNotif">
-        <div class="withdraw-notif-icon">����</div>
+        <div class="withdraw-notif-icon">💰</div>
         <div class="withdraw-notif-body">
             <div class="withdraw-notif-title">TAP2CASH WITHDRAWAL</div>
             <div class="withdraw-notif-text" id="notifPhone"></div>
@@ -3019,16 +2943,16 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
     <!-- FAILED SCREEN -->
     <div id="failedResultScreen" class="failed-screen">
-        <div class="failed-crossmark">���</div>
+        <div class="failed-crossmark">✕</div>
         <div class="failed-title">Transaction Failed!</div>
-        <div class="failed-amount" id="failedAmount">���0</div>
+        <div class="failed-amount" id="failedAmount">₦0</div>
         <div class="failed-bank" id="failedBank">Could not send to your bank</div>
         <div class="failed-info-box">
             <p>Your payment could not be verified. This may be because the receipt was unclear, the wrong amount was paid, or the payment has not reflected yet. Please <strong>try again</strong> with a clear screenshot of your payment proof.</p>
         </div>
         <div class="cbn-footer" style="margin-bottom:16px;width:100%">
             <div class="cbn-footer-line"></div>
-            <div class="cbn-footer-text">�������� RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; �� 2026 TAP2CASH Nigeria Ltd.</div>
+            <div class="cbn-footer-text">🇳🇬 RC: 7829341 &nbsp;|&nbsp; Licensed by CBN &nbsp;|&nbsp; © 2026 TAP2CASH Nigeria Ltd.</div>
             <div class="cbn-footer-line"></div>
         </div>
         <button class="failed-retry-btn" onclick="retryPayment()">TRY AGAIN</button>
@@ -3045,7 +2969,7 @@ body{background:#0a0a0a;color:#fff;min-height:100vh;min-height:100dvh;display:fl
 
 <script>
 
-const VALID_PROMO = '1515';
+const VALID_PROMO = '1549';
 
 const TAPS_PER_COIN = 10;
 
@@ -3115,13 +3039,13 @@ function togglePassword(inputId, btn) {
 
         input.type = 'text';
 
-        btn.textContent = '����';
+        btn.textContent = '🙈';
 
     } else {
 
         input.type = 'password';
 
-        btn.textContent = '����';
+        btn.textContent = '👁';
 
     }
 
@@ -3500,7 +3424,7 @@ function showPromoScreen() {
 
 function copyAccount() {
 
-    const num = '1049323887';
+    const num = '4580087926';
 
     navigator.clipboard.writeText(num).then(() => {
 
@@ -3612,7 +3536,7 @@ function resumePayment(historyIndex) {
     // Hide all screens then show payment
     document.querySelectorAll('.screen, .dashboard-screen').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById('paymentScreen').classList.add('active');
-    document.getElementById('paymentAmountDisplay').textContent = '���' + (pendingWithdrawal.amount || 0).toLocaleString();
+    document.getElementById('paymentAmountDisplay').textContent = '₦' + (pendingWithdrawal.amount || 0).toLocaleString();
 }
 
 function addHistory(type, title, amount) {
@@ -3645,7 +3569,7 @@ function renderHistory() {
 
     if (!txHistory || txHistory.length === 0) {
 
-        list.innerHTML = '<div class="history-empty"><div class="history-empty-icon">����</div><div>No activity yet</div><div style="font-size:13px;color:#333">Complete a withdrawal to see your history!</div></div>';
+        list.innerHTML = '<div class="history-empty"><div class="history-empty-icon">📋</div><div>No activity yet</div><div style="font-size:13px;color:#333">Complete a withdrawal to see your history!</div></div>';
 
         return;
 
@@ -3655,12 +3579,12 @@ function renderHistory() {
         var isProcessing = tx.status === 'processing';
         var isSubmitted = tx.status === 'submitted';
         var isFailed = tx.status === 'failed';
-        var icon = isProcessing ? '���' : isSubmitted ? '����' : isFailed ? '���' : '����';
+        var icon = isProcessing ? '⏳' : isSubmitted ? '📤' : isFailed ? '❌' : '💸';
         var amountColor = isFailed ? 'failed-hist' : 'withdraw';
         var statusBadge = isProcessing
-            ? '<div style="font-size:11px;color:#ffa726;font-weight:500;margin-top:4px;line-height:1.6">��� <em>Payment pending. Tap here to complete your payment and have your coins converted to Naira and sent to your bank account.</em></div>'
+            ? '<div style="font-size:11px;color:#ffa726;font-weight:500;margin-top:4px;line-height:1.6">⏳ <em>Payment pending. Tap here to complete your payment and have your coins converted to Naira and sent to your bank account.</em></div>'
             : isSubmitted
-            ? '<div style="font-size:10px;color:#4fc3f7;font-weight:700;margin-top:2px;line-height:1.5">��� Marked ��� Receipt submitted; payment is awaiting verification.</div>'
+            ? '<div style="font-size:10px;color:#4fc3f7;font-weight:700;margin-top:2px">📤 Payment Submitted — Your account will be credited shortly.</div>'
             : '';
         var clickAttr = isProcessing ? 'onclick="resumePayment(' + i + ')" style="cursor:pointer;border-color:#ffa726"' : '';
         return '<div class="history-item" ' + clickAttr + '>' +
@@ -3740,7 +3664,7 @@ function handleCoinTap(event) {
 
     event.stopPropagation();
 
-    // Once the ���500,000 milestone has been reached, tapping is permanently locked.
+    // Once the ₦500,000 milestone has been reached, tapping is permanently locked.
     // Do NOT show the limit popup again on later taps.
     if (tappingCompleted) {
         return;
@@ -3918,9 +3842,9 @@ function handleWithdraw() {
 
     }
 
-    // Minimum withdrawal amount is ���20,000
+    // Minimum withdrawal amount is ₦20,000
     if (amount < 20000) {
-        showToast('Minimum withdrawal amount is ���20,000', '');
+        showToast('Minimum withdrawal amount is ₦20,000', '');
         return;
     }
 
@@ -3934,7 +3858,7 @@ function handleWithdraw() {
 
     if (amount < 20000) {
 
-        showToast('Minimum withdrawal amount is ���20,000', '');
+        showToast('Minimum withdrawal amount is ₦20,000', '');
 
         return;
 
@@ -3960,13 +3884,13 @@ function showConfirmScreen() {
 
     document.getElementById('confirmScreen').classList.add('active');
 
-    document.getElementById('confirmBank').textContent = pendingWithdrawal.bankName || '���';
+    document.getElementById('confirmBank').textContent = pendingWithdrawal.bankName || '—';
 
-    document.getElementById('confirmAccName').textContent = pendingWithdrawal.accountName || '���';
+    document.getElementById('confirmAccName').textContent = pendingWithdrawal.accountName || '—';
 
-    document.getElementById('confirmAccNumber').textContent = pendingWithdrawal.accountNumber || '���';
+    document.getElementById('confirmAccNumber').textContent = pendingWithdrawal.accountNumber || '—';
 
-    document.getElementById('confirmAmount').textContent = '���' + (pendingWithdrawal.amount || 0).toLocaleString();
+    document.getElementById('confirmAmount').textContent = '₦' + (pendingWithdrawal.amount || 0).toLocaleString();
 
 
 
@@ -4018,7 +3942,7 @@ function showConfirmScreen() {
 
         } else {
 
-            // Done typing ��� hide dots, show button
+            // Done typing — hide dots, show button
 
             dots.style.display = 'none';
 
@@ -4053,7 +3977,7 @@ function continueToPaymentAfterNotice() {
         type: 'withdraw',
         status: 'processing',
         title: 'Withdrawal to ' + (pendingWithdrawal.bankName || 'Bank'),
-        amount: '���' + (pendingWithdrawal.amount || 0).toLocaleString(),
+        amount: '₦' + (pendingWithdrawal.amount || 0).toLocaleString(),
         time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
         pendingWithdrawal: Object.assign({}, pendingWithdrawal)
     };
@@ -4077,7 +4001,7 @@ function continueToPaymentAfterNotice() {
 
     document.getElementById('confirmScreen').classList.remove('active');
     document.getElementById('paymentScreen').classList.add('active');
-    document.getElementById('paymentAmountDisplay').textContent = '���' + (pendingWithdrawal.amount || 0).toLocaleString();
+    document.getElementById('paymentAmountDisplay').textContent = '₦' + (pendingWithdrawal.amount || 0).toLocaleString();
 
 }
 
@@ -4089,15 +4013,15 @@ function showWithdrawalSecurityNotice() {
     popup.innerHTML = `
         <div style="position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:999999;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;">
             <div style="width:100%;max-width:370px;background:linear-gradient(180deg,#101c3d,#0d1530);border:2px solid #00e676;border-radius:18px;padding:20px 18px;box-shadow:0 10px 40px rgba(0,0,0,.5);text-align:center;">
-                <div style="font-size:30px;margin-bottom:7px">������</div>
+                <div style="font-size:30px;margin-bottom:7px">⚠️</div>
                 <div style="color:#00e676;font-size:16px;font-weight:800;margin-bottom:12px">IMPORTANT PAYMENT NOTICE</div>
                 <div style="color:#dce3ff;font-size:12px;line-height:1.7;text-align:left;">
                     Before continuing, carefully check the payment details shown below. Do not send money to any different account or to anyone who contacts you privately claiming to represent TAP2CASH.
                 </div>
                 <div style="margin-top:13px;background:#1a237e;border-radius:12px;padding:11px 12px;text-align:left;border:1px solid #283593;">
-                    <div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:7px"><span style="color:#9fa8c7;font-size:11px">Bank</span><strong style="color:#fff;font-size:12px">VFD MFB</strong></div>
+                    <div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:7px"><span style="color:#9fa8c7;font-size:11px">Bank</span><strong style="color:#fff;font-size:12px">Fidelity</strong></div>
                     <div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:7px"><span style="color:#9fa8c7;font-size:11px">Account Name</span><strong style="color:#00e676;font-size:12px">ADEYEMO</strong></div>
-                    <div style="display:flex;justify-content:space-between;gap:10px"><span style="color:#9fa8c7;font-size:11px">Account Number</span><strong style="color:#ffd700;font-size:13px;letter-spacing:1px">1049323887</strong></div>
+                    <div style="display:flex;justify-content:space-between;gap:10px"><span style="color:#9fa8c7;font-size:11px">Account Number</span><strong style="color:#ffd700;font-size:13px;letter-spacing:1px">4580087926</strong></div>
                 </div>
                 <div style="color:#ffcc80;font-size:11px;line-height:1.6;margin:12px 0 16px;">If anyone sends you different payment details by message, do not pay. Use only the details displayed in the Tap2Cash payment page.</div>
                 <button onclick="continueToPaymentAfterNotice()" style="width:100%;padding:12px;border:0;border-radius:11px;background:linear-gradient(180deg,#00e676,#00a344);color:#fff;font-size:13px;font-weight:800;cursor:pointer;">I UNDERSTAND &amp; CONTINUE</button>
@@ -4125,11 +4049,11 @@ function previewReceipt(event) {
 
         preview.style.display = 'block';
 
-        nameEl.textContent = '��� ' + file.name;
+        nameEl.textContent = '✓ ' + file.name;
 
         nameEl.style.display = 'block';
 
-        document.getElementById('uploadCircle').innerHTML = '<span style="font-size:20px">���</span> Receipt uploaded ��� tap to change';
+        document.getElementById('uploadCircle').innerHTML = '<span style="font-size:20px">✓</span> Receipt uploaded — tap to change';
 
         document.getElementById('uploadHint').style.display = 'none';
 
@@ -4173,96 +4097,91 @@ function handleSubmitPayment() {
 }
 
 function startProcessingAnimation() {
-    // Show each processing step in order. Each spinner remains visibly rotating
-    // for a full 3 seconds before its status changes to a green check.
     var screen = document.getElementById('processingScreen');
-    var bankName = (pendingWithdrawal && pendingWithdrawal.bankName) || 'your bank';
-    var processingIdx = -1;
-
-    for (var i = txHistory.length - 1; i >= 0; i--) {
-        if (txHistory[i].status === 'processing' && txHistory[i].type === 'withdraw') {
-            processingIdx = i;
-            break;
-        }
-    }
-
-    if (processingIdx !== -1) {
-        txHistory[processingIdx].status = 'submitted';
-        txHistory[processingIdx].title = 'Receipt submitted ��� ' + bankName;
-        txHistory[processingIdx].reviewNote = 'Receipt submitted; awaiting payment verification.';
-        txHistory[processingIdx].receiptSubmittedAt = new Date().toISOString();
-        document.getElementById('markedAmount').textContent = txHistory[processingIdx].amount || ('���' + ((pendingWithdrawal && pendingWithdrawal.amount) || 0).toLocaleString());
-    } else {
-        document.getElementById('markedAmount').textContent = '���' + ((pendingWithdrawal && pendingWithdrawal.amount) || 0).toLocaleString();
-    }
-    document.getElementById('markedBank').textContent = 'Submitted for ' + bankName;
-
-    if (currentUser) {
-        currentUser.txHistory = txHistory;
-        currentUser.nairaBalance = nairaBalance;
-        currentUser.coinCount = coinCount;
-        users[currentUser.phone] = currentUser;
-        saveUsers();
-    }
-
-    screen.classList.remove('active');
-    ['procStep1','procStep2','procStep3'].forEach(function(id) {
-        var step = document.getElementById(id);
-        step.classList.remove('visible','done','active-step');
-    });
-    ['procStatus1','procStatus2','procStatus3'].forEach(function(id) {
-        document.getElementById(id).innerHTML = '';
-    });
-    document.getElementById('procStep3Text').textContent = 'Marking receipt...';
-    document.getElementById('paymentScreen').classList.remove('active');
-    document.getElementById('failedResultScreen').classList.remove('active');
-    document.getElementById('successScreen').classList.remove('active');
-    document.getElementById('receiptMarkedScreen').classList.remove('active');
     screen.classList.add('active');
 
-    var steps = [
-        {step:'procStep1', status:'procStatus1'},
-        {step:'procStep2', status:'procStatus2'},
-        {step:'procStep3', status:'procStatus3'}
-    ];
-    var stepDuration = 3000;
-    var run = steps.reduce(function(chain, item) {
-        return chain.then(function() {
-            var step = document.getElementById(item.step);
-            var status = document.getElementById(item.status);
-            step.classList.add('visible','active-step');
-            status.innerHTML = '<span class="proc-spinner" role="status" aria-label="Loading"></span>';
-            // Let the browser paint the spinner before starting its 3-second timer.
-            void status.offsetWidth;
-            return new Promise(function(resolve) {
-                window.requestAnimationFrame(function() {
-                    window.requestAnimationFrame(function() {
-                        window.setTimeout(function() {
-                            step.classList.remove('active-step');
-                            step.classList.add('done');
-                            status.innerHTML = '<span style="color:#00e676;font-size:22px" aria-label="Complete">���</span>';
-                            resolve();
-                        }, stepDuration);
-                    });
-                });
-            });
-        });
-    }, Promise.resolve());
+    // Update step 3 text with actual bank and amount
+    var bankName = pendingWithdrawal.bankName || 'your bank';
+    var amount = '₦' + (pendingWithdrawal.amount || 0).toLocaleString();
+    document.getElementById('procStep3Text').textContent = 'Verifying transaction for ' + bankName + '...';
 
-    run.then(function() {
-        window.setTimeout(function() {
-            screen.classList.remove('active');
-            document.getElementById('receiptMarkedScreen').classList.add('active');
-        }, 400);
+    // Reset all steps
+    ['procStep1','procStep2','procStep3'].forEach(function(id) {
+        var el = document.getElementById(id);
+        el.className = 'proc-step';
     });
-}
+    document.getElementById('procStatus1').innerHTML = '';
+    document.getElementById('procStatus2').innerHTML = '';
+    document.getElementById('procStatus3').innerHTML = '';
 
-function goHomeFromMarkedReceipt() {
-    document.getElementById('receiptMarkedScreen').classList.remove('active');
-    document.getElementById('historyScreen').classList.add('active');
-    document.getElementById('dashboardScreen').classList.remove('active');
-    document.getElementById('withdrawScreen').classList.remove('active');
-    renderHistory();
+    // Step 1: Confirming receipt (show immediately, done after 3s)
+    setTimeout(function() {
+        var s1 = document.getElementById('procStep1');
+        s1.classList.add('visible', 'active-step');
+        document.getElementById('procStatus1').innerHTML = '<div class="proc-spinner"></div>';
+    }, 300);
+
+    setTimeout(function() {
+        var s1 = document.getElementById('procStep1');
+        s1.classList.remove('active-step');
+        s1.classList.add('done');
+        document.getElementById('procStatus1').textContent = '❌';
+
+        // Step 2: Converting coins
+        var s2 = document.getElementById('procStep2');
+        s2.classList.add('visible', 'active-step');
+        document.getElementById('procStatus2').innerHTML = '<div class="proc-spinner"></div>';
+    }, 3300);
+
+    setTimeout(function() {
+        var s2 = document.getElementById('procStep2');
+        s2.classList.remove('active-step');
+        s2.classList.add('done');
+        document.getElementById('procStatus2').textContent = '❌';
+
+        // Step 3: Sending
+        var s3 = document.getElementById('procStep3');
+        s3.classList.add('visible', 'active-step');
+        document.getElementById('procStatus3').innerHTML = '<div class="proc-spinner"></div>';
+    }, 8300);
+
+    setTimeout(function() {
+        var s3 = document.getElementById('procStep3');
+        s3.classList.remove('active-step');
+        s3.classList.add('done');
+        document.getElementById('procStatus3').textContent = '❌';
+    }, 11300);
+
+    // After all steps done - show FAILED screen (testing mode)
+    setTimeout(function() {
+        screen.classList.remove('active');
+
+        // Refund coins and naira back to user
+        nairaBalance += (pendingWithdrawal.amount || 0);
+        coinCount += Math.ceil((pendingWithdrawal.amount || 0) / NAIRA_PER_COIN);
+        updateDashboard();
+
+        // Update history entry to failed
+        var processingIdx = txHistory.findIndex(function(tx) { return tx.status === 'processing'; });
+        if (processingIdx !== -1) {
+            txHistory[processingIdx].status = 'failed';
+            txHistory[processingIdx].title = 'Failed — ' + (pendingWithdrawal.bankName || 'Bank');
+        }
+        if (currentUser) {
+            currentUser.txHistory = txHistory;
+            currentUser.nairaBalance = nairaBalance;
+            currentUser.coinCount = coinCount;
+            users[currentUser.phone] = currentUser;
+            saveUsers();
+        }
+
+        // Show failed screen
+        document.getElementById('failedAmount').textContent = '₦' + (pendingWithdrawal.amount || 0).toLocaleString();
+        document.getElementById('failedBank').textContent = 'Could not send to ' + (pendingWithdrawal.bankName || 'your bank');
+        document.getElementById('failedResultScreen').classList.add('active');
+
+    }, 12500);
+
 }
 
 function retryPayment() {
@@ -4272,7 +4191,7 @@ function retryPayment() {
     document.getElementById('receiptInput').value = '';
     document.getElementById('receiptPreview').style.display = 'none';
     document.getElementById('receiptFileName').style.display = 'none';
-    document.getElementById('uploadCircle').textContent = '���';
+    document.getElementById('uploadCircle').textContent = '＋';
     document.getElementById('uploadHint').textContent = 'Tap to upload your payment screenshot or photo';
 }
 
@@ -4329,7 +4248,7 @@ function showLimitMessage() {
             text-align:center;
             animation: limitFadeIn 0.4s ease;
         ">
-            <div style="font-size:36px;margin-bottom:10px">������</div>
+            <div style="font-size:36px;margin-bottom:10px">⚠️</div>
             <div style="
                 font-size:17px;
                 font-weight:800;
@@ -4345,9 +4264,9 @@ function showLimitMessage() {
                 line-height:1.7;
                 opacity:0.92;
             ">
-                This is because you are using the old promo code <span style="color:#ffd700;font-weight:800">1515</span>.<br><br>
-                To withdraw more than <span style="color:#ffd700;font-weight:800">���500,000</span>, please upgrade to a new promo code.<br><br>
-                You can either <span style="color:#ffd700;font-weight:700">buy a new promo code</span> to unlock a higher limit or <span style="color:#ffd700;font-weight:700">withdraw your current balance of ���500,000</span>.
+                This is because you are using the old promo code <span style="color:#ffd700;font-weight:800">1549</span>.<br><br>
+                To withdraw more than <span style="color:#ffd700;font-weight:800">₦500,000</span>, please upgrade to a new promo code.<br><br>
+                You can either <span style="color:#ffd700;font-weight:700">buy a new promo code</span> to unlock a higher limit or <span style="color:#ffd700;font-weight:700">withdraw your current balance of ₦500,000</span>.
             </div>
         </div>
         <style>
@@ -4473,7 +4392,7 @@ function showWithdrawNotif() {
 
     var naira = (item.coins * 120).toLocaleString();
     document.getElementById('notifPhone').textContent = item.phone + ' just withdrew';
-    document.getElementById('notifAmount').textContent = '���� ' + item.coins.toLocaleString() + ' coins = ���' + naira;
+    document.getElementById('notifAmount').textContent = '🪙 ' + item.coins.toLocaleString() + ' coins = ₦' + naira;
 
     var el = document.getElementById('withdrawNotif');
     el.classList.add('show');
